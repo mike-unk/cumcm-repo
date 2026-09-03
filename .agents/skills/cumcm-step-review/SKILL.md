@@ -2,7 +2,6 @@
 name: cumcm-step-review
 description: "数学建模国赛（CUMCM/全国大学生数学建模竞赛）分步审核工作流。当用户要求做数学建模国赛题目、完整建模、建模分析、代码求解、结果可视化或生成数学建模论文，且需要分步推进、先审核思路与算法再写代码、每个部分写入论文草稿供审核时使用。按'问题重述→数据预处理→逐问建模与求解→模型分析与检验→模型评价与推广→参考文献→附录→问题分析→模型假设→符号说明'逐步完成：每部分先给出分析与候选方案，用户审核通过后编写代码，并把该部分写入 Word 论文草稿再次供用户审核；保留建模约束、工具链、算法库与最终验收。"
 ---
-
 # 数学建模国赛-逐步审核版
 
 ## 定位
@@ -55,12 +54,12 @@ description: "数学建模国赛（CUMCM/全国大学生数学建模竞赛）分
 
 ## 路由
 
-| 用户意图 | 执行方式 |
-| --- | --- |
-| 完整建模 | 按上述 1–10 顺序分步推进，全部审核定稿后生成最终论文 |
-| 只做单一或部分章节 | 只执行对应部分及其门禁，不强制全流程 |
-| 只写代码、跑结果 | 需要题目和可执行的模型说明；缺失时先补齐必要分析 |
-| 只生成或修改论文 | 需要已审核的草稿与真实运行结果；缺失时回退到对应部分 |
+| 用户意图           | 执行方式                                               |
+| ------------------ | ------------------------------------------------------ |
+| 完整建模           | 按上述 1–11 顺序分步推进，全部审核定稿后生成最终论文 |
+| 只做单一或部分章节 | 只执行对应部分及其门禁，不强制全流程                   |
+| 只写代码、跑结果   | 需要题目和可执行的模型说明；缺失时先补齐必要分析       |
+| 只生成或修改论文   | 需要已审核的草稿与真实运行结果；缺失时回退到对应部分   |
 
 ## 固定交付物
 
@@ -100,24 +99,24 @@ description: "数学建模国赛（CUMCM/全国大学生数学建模竞赛）分
 
 先读本文件，再按当前部分读取 `references/阶段流程.md` 对应章节；使用工具前读取对应工具的 `SKILL.md`；禁止一次性加载全部资料。
 
-| 当前任务 | 额外读取 |
-| --- | --- |
-| 开始或推进任一部分 | `references/README.md` → `references/阶段流程.md` |
-| 把某部分写入论文草稿（每个部分） | `references/优秀论文写法指南.md` 对应章节 →（需要实证句模时）`references/优秀论文语料分析报告.md` 对应小节 → `references/写作与图表规范.md` → `references/roles/论文手/章节模板.md` |
-| 写、改或评摘要（摘要部分/评审既有摘要） | `references/摘要写作/摘要写作方法论.md` →（按需）`references/摘要写作/analysis.md`（评审视角）→ `references/摘要写作/templates.md`（句式）→ `references/摘要写作/mistakes.md`（误区）→ `references/摘要写作/checklist.md`（自检）→ `references/摘要写作/example.md`（改写案例）→ `references/摘要写作/摘要汇总.md`（93 篇语料对照） |
-| 选择模型或查算法 | `references/模型选型树.md` / `references/算法索引.md`，再读取一个或少数几个 `assets/*.md` |
-| 绘图与配色 | `references/绘图参考/chart_knowledge_base.md`（100+ 图表速查/图级/避坑）→ `references/绘图参考/chart_selection.md`（论证意图）→ `scripts/plot_style.py`、`assets/期刊配色方案.md`、`references/写作与图表规范.md` |
-| 绘制技术路线图/流程图等非数据图 | `references/绘图参考/drawio_flowchart.md`（国赛规则与落位）→ `tools/drawio/SKILL.md`（完整工作流）→ 按图类型 `tools/drawio/references/diagram-types.md` → 手写 XML 前 `tools/drawio/references/xml-authoring.md` |
-| 热力图进阶 / 相关分析进阶图（用户提到"热力图进阶"时优先） | `references/绘图参考/heatmap_advanced.md`（Mantel 连线图 + 皮尔逊整合矩阵，优先）→ `references/绘图参考/chart_knowledge_base.md`（热力图/矩阵散点图）→ `references/绘图参考/plot_recipes.md` §8 |
-| 图表自检 | `scripts/figure_audit.py`、`references/绘图参考/visual_review.md` |
-| 科研绘图模板 | `assets/figure-templates/README.md` |
-| 搜索论文 | `tools/paper_search/SKILL.md` |
-| 读取题目 PDF | `tools/pdf/SKILL.md` |
-| 处理 Excel | `tools/xlsx/SKILL.md` |
-| 写入或生成 Word 草稿/论文 | `tools/docx/SKILL.md` |
-| 生成 LaTeX 论文 | `tools/latex/SKILL.md` |
-| 迁移到其他工具/机器（复制包后效果变差时） | `scripts/check_env.py`（环境诊断）→ `迁移与依赖说明.md`（外部依赖与工具差异）→ `requirements.txt`（安装清单） |
-| 最终验收 | `scripts/paper_check.py`、`references/质检清单.md` |
+| 当前任务                                                  | 额外读取                                                                                                                                                                                                                                                                                                                                                |
+| --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 开始或推进任一部分                                        | `references/README.md` → `references/阶段流程.md`                                                                                                                                                                                                                                                                                                  |
+| 把某部分写入论文草稿（每个部分）                          | `references/优秀论文写法指南.md` 对应章节 →（需要实证句模时）`references/优秀论文语料分析报告.md` 对应小节 → `references/写作与图表规范.md` → `references/roles/论文手/章节模板.md`                                                                                                                                                          |
+| 写、改或评摘要（摘要部分/评审既有摘要）                   | `references/摘要写作/摘要写作方法论.md` →（按需）`references/摘要写作/analysis.md`（评审视角）→ `references/摘要写作/templates.md`（句式）→ `references/摘要写作/mistakes.md`（误区）→ `references/摘要写作/checklist.md`（自检）→ `references/摘要写作/example.md`（改写案例）→ `references/摘要写作/摘要汇总.md`（93 篇语料对照） |
+| 选择模型或查算法                                          | `references/模型选型树.md` / `references/算法索引.md`，再读取一个或少数几个 `assets/*.md`                                                                                                                                                                                                                                                         |
+| 绘图与配色                                                | `references/绘图参考/chart_knowledge_base.md`（100+ 图表速查/图级/避坑）→ `references/绘图参考/chart_selection.md`（论证意图）→ `scripts/plot_style.py`、`assets/期刊配色方案.md`、`references/写作与图表规范.md`                                                                                                                           |
+| 绘制技术路线图/流程图等非数据图                           | `references/绘图参考/drawio_flowchart.md`（国赛规则与落位）→ `tools/drawio/SKILL.md`（完整工作流）→ 按图类型 `tools/drawio/references/diagram-types.md` → 手写 XML 前 `tools/drawio/references/xml-authoring.md`                                                                                                                             |
+| 热力图进阶 / 相关分析进阶图（用户提到"热力图进阶"时优先） | `references/绘图参考/heatmap_advanced.md`（Mantel 连线图 + 皮尔逊整合矩阵，优先）→ `references/绘图参考/chart_knowledge_base.md`（热力图/矩阵散点图）→ `references/绘图参考/plot_recipes.md` §8                                                                                                                                                |
+| 图表自检                                                  | `scripts/figure_audit.py`、`references/绘图参考/visual_review.md`                                                                                                                                                                                                                                                                                   |
+| 科研绘图模板                                              | `assets/figure-templates/README.md`                                                                                                                                                                                                                                                                                                                   |
+| 搜索论文                                                  | `tools/paper_search/SKILL.md`                                                                                                                                                                                                                                                                                                                         |
+| 读取题目 PDF                                              | `tools/pdf/SKILL.md`                                                                                                                                                                                                                                                                                                                                  |
+| 处理 Excel                                                | `tools/xlsx/SKILL.md`                                                                                                                                                                                                                                                                                                                                 |
+| 写入或生成 Word 草稿/论文                                 | `tools/docx/SKILL.md`                                                                                                                                                                                                                                                                                                                                 |
+| 生成 LaTeX 论文                                           | `tools/latex/SKILL.md`                                                                                                                                                                                                                                                                                                                                |
+| 迁移到其他工具/机器（复制包后效果变差时）                 | `scripts/check_env.py`（环境诊断）→ `迁移与依赖说明.md`（外部依赖与工具差异）→ `requirements.txt`（安装清单）                                                                                                                                                                                                                                   |
+| 最终验收                                                  | `scripts/paper_check.py`、`references/质检清单.md`                                                                                                                                                                                                                                                                                                  |
 
 ## 完成判定
 
